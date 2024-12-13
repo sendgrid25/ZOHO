@@ -97,7 +97,7 @@ app.post('/webhook/sendgrid', async (req, res) => {
               Event_ID: sg_event_id,
               Message_ID: sg_message_id,
               Date_and_Time: new Date(timestamp * 1000).toISOString(),
-              Solution_Title: category ? category.join(", ") : 'No Category',
+              Solution_Title: category ? category.join(", ") : 'SendGrid Email',
               Title: `Solution for ${email}`,
               Lead_Owner: Lead_Owner || 'Not Assigned',
             },
