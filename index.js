@@ -23,22 +23,6 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 /////////-------function for fetch newly created leads and a save it on the database----------////////
 
-// app.post('/webhook/zoho/leads', async (req, res) => {
-//   try {
-//     const webhookData = req.body;
-//     console.log('Headers:', req.headers);
-//     console.log('Query Params:', req.query);
-//     console.log('Received webhook data:', webhookData);
-//     const lead = new Lead(webhookData);
-//     await lead.save();
-//     console.log('Lead saved successfully:', lead);
-//     res.status(200).send('Success');
-//   } catch (error) {
-//     console.error('Error processing webhook:', error);
-//     res.status(500).send('Internal Server Error');
-//   }
-// });
-
 app.post('/webhook/zoho/leads', async (req, res) => {
   try {
     const webhookData = req.body;
