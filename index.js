@@ -18,6 +18,43 @@ mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .catch((err) => console.error('MongoDB connection error:', err));
 
 
+
+
+
+////------controler for fetch leads from zoho crm ------------///////////
+
+//fetch the leads
+app.get('/fetch/zoho/leads', async (req, res) => {
+  try {
+    const accessToken = await getAccessToken(); // Ensure getAccessToken is defined and works properly
+    console.log(accessToken, "accessToken"); 
+    const response = await axios.get(process.env.ZOHO_API_URL, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    res.status(200).json({
+      success: true,
+      data: response.data.data,
+    });
+  } catch (error) {
+    console.error("Error fetching leads:", error.response?.data || error.message);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch leads.",
+    });
+  }
+});
+
+
+///////---------------------------------------------------------------///////
+
+
+
+
+
+
+
  
 
 
